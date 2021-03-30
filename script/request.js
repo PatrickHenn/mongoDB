@@ -14,13 +14,13 @@ let orgaId = '';
 
 if (process.env.STACK === 'dev') {
   endpoint = 'https://api.dev.nx.bezahl.de/nxt/v1/';
-  orgaId = process.env.ODEV;
+  orgaId = 'Hgza28rQ-' || process.env.ODEV;
   option.headers['NX-Token'] = process.env.DEV;
   // console.log('after:', { endpoint }, 'orgaId', { orgaId }, 'token', option.headers['NX-Token']);
 }
 
 async function post(uri, _body) {
-    // console.log('post',uri,_body);
+    console.log('post',uri,_body);
     const body = await request({
       method: 'POST',
       ...option,
@@ -32,4 +32,4 @@ async function post(uri, _body) {
 
 
 
-module.exports = { post }
+module.exports = { post, orgaId }

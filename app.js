@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const { render } = require('pug');
 require('dotenv').config();
 const postsRouter = require('./routes/posts.routes');
 
@@ -16,8 +17,10 @@ mongoose.connect(process.env.MONGODB_URI, {
 
 app.use('/posts', postsRouter);
 
-app.get('', (req, res) => {
-    res.send('HI ich bin eine Seite');
-});
+
+const router = require('./routes/posts.routes.js');
+
+app.use('/api', router);
+
 
 app.listen(PORT, () => console.log('läuft'));
