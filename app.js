@@ -17,10 +17,8 @@ mongoose.connect(process.env.MONGODB_URI, {
 
 app.use('/posts', postsRouter);
 
-
 const router = require('./routes/posts.routes.js');
 
 app.use('/api', router);
-
 
 app.listen(PORT, () => console.log('läuft'));

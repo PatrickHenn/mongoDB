@@ -1,0 +1,11 @@
+form(action="/api" method='post')
+label(for='name')
+    input(name='name' type='text' placeholder='Name')
+label(for='price')
+    input(name='price' type='number' placeholder='Price')
+    input.btn(type='submit' value='Submit') 
+form(action='/api' method='get')
+    input.btn(type='submit' value='get')
+p Antwort:
+    pre=JSON.stringify(result)
+table(style='width:100%', border='1')
