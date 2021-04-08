@@ -1,0 +1,11 @@
+doctype html
+html
+  head
+    link(rel='stylesheet', href='/style.css')
+    h1 Test
+        form(action="/posts" method='post')
+            input.btn(type='submit' value='create') 
+        form(action='/posts' method='get')
+            input.btn(type='submit' value='get')
+        form(action='/api/test' method='post')
+            input.btn(type='submit' value='test')
