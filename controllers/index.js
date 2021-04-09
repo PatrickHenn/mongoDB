@@ -6,7 +6,7 @@ const orgaId = process.env.ODEV;
 const token = process.env.DEV;
 
 async function createOrder() {
-  const y = await request({
+  const id = await request({
     method: 'POST',
     uri: 'https://api.dev.nx.bezahl.de/nxt/v1/order/',
     headers: {
@@ -21,42 +21,38 @@ async function createOrder() {
       recipient: 'patrick.henn+test@nx-technologies.com',
     },
   });
-  console.log('1');
-  return y;
-}
+  console.log('createOrder');
 
-async function getOrder() {
-  const z = await request({
+  const result = await request({
     method: 'GET',
-    uri: 'https://api.dev.nx.bezahl.de/nxt/v1/order/aBXJ7xQ2i',
+    uri: `https://api.dev.nx.bezahl.de/nxt/v1/order/${id.id}`,
     headers: {
       'Content-Type': 'application/json',
       'NX-Token': token,
     },
     json: true,
   });
-  console.log('2');
-  return z;
-}
+  console.log('getOrder', result.link);
 
-async function writeDB() {
-  const x = await request({
+  const send = await request({
     method: 'POST',
     uri: 'http://localhost:5000/posts',
     json: true,
     body: {
-      title: 'Wetter',
-      content: 'tolles Wetter',
+      name: result.name,
+      price: result.assets[0].amount,
+      organization: result.organization.name,
+      orderId: id.id,
+      link: result.link,
     },
   });
-  console.log('3');
-  return x;
+  console.log('writeDB', send);
+  return result;
 }
 
-// createOrder().then(console.log);
-// getOrder().then(console.log);
+createOrder().then();
 // writeDB().then(console.log);
 // eslint-disable-next-line max-len
 // createOrder().then(console.log).then(getOrder().then(console.log).then(writeDB().then(console.log)));
 
-module.exports = { createOrder, getOrder, writeDB };
+module.exports = { createOrder };

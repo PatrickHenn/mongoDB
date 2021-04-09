@@ -8,7 +8,18 @@ const router = express.Router();
 
 router.get('/', posts.findAll);
 router.post('/', posts.create);
-router.post('/test', test.createOrder);
+// router.post('/test', test.createOrder);
+router.post('/test', async (req, res) => {
+  const result = await test.createOrder(req.body ? req.body : '');
+  res.render('../views/index', { createOrder: result });
+});
+
+router.post('/test', async (req, res) => {
+  const result = await test.getOrder(req.body ? req.body : '');
+  res.render('../views/index', { createOrder: result });
+});
+
+// router.get('/test', test.getOrder);
 router.get('/:postId', posts.find);
 router.put('/:postId', posts.update);
 router.delete('/:postId', posts.delete);

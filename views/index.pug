@@ -4,8 +4,12 @@ html
     link(rel='stylesheet', href='/style.css')
     h1 Test
         form(action="/posts" method='post')
-            input.btn(type='submit' value='create') 
+            input.btn(type='submit' value='create -> MongoDB') 
         form(action='/posts' method='get')
-            input.btn(type='submit' value='get')
+            input.btn(type='submit' value='get -> MongoDB')
         form(action='/api/test' method='post')
-            input.btn(type='submit' value='test')
+            input.btn(type='submit' value='create -> Order')
+        form(action='/api/test' method='get')
+            input.btn(type='submit' value='get -> Order')
+        p Antwort:
+          pre=JSON.stringify(result)
