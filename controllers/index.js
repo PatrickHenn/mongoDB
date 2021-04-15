@@ -2,6 +2,8 @@
 const request = require('request-promise-native');
 require('dotenv').config();
 
+// const posts = require('./post.controller');
+
 const orgaId = process.env.ODEV;
 const token = process.env.DEV;
 
@@ -32,7 +34,7 @@ async function createOrder() {
     },
     json: true,
   });
-  console.log('getOrder', result.link);
+  console.log('getOrder', result);
 
   const send = await request({
     method: 'POST',
@@ -47,9 +49,20 @@ async function createOrder() {
     },
   });
   console.log('writeDB', send);
+
+  // const getDB = await request({
+  //   method: 'GET',
+  //   uri: `http://localhost:5000/:${send._id}`,
+  //   headers: {
+  //     'Content-Type': 'application/json',
+  //   },
+  //   json: true,
+  // });
+  // console.log('getDB', getDB);
   return result;
 }
 
+// getMongoDB().then(console.log);
 createOrder().then();
 // writeDB().then(console.log);
 // eslint-disable-next-line max-len

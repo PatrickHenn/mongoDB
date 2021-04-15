@@ -11,5 +11,18 @@ html
             input.btn(type='submit' value='create -> Order')
         form(action='/api/test' method='get')
             input.btn(type='submit' value='get -> Order')
-        p Antwort:
-          pre=JSON.stringify(result)
+        table(style='width:100%', border='1')
+          tr
+            th Name
+            th Price
+            th Datum
+            th Organisation
+            th OrderId
+            - for (let i = 0; i < 10; ++i) {
+          tr
+            td=createOrder
+            td=createOrder
+            td=createOrder
+            td=createOrder
+            td=createOrder
+            -}
