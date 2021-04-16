@@ -52,14 +52,26 @@ async function createOrder() {
 
   // const getDB = await request({
   //   method: 'GET',
-  //   uri: `http://localhost:5000/:${send._id}`,
+  //   uri: `http://localhost:5000/posts/${send._id}`,
   //   headers: {
   //     'Content-Type': 'application/json',
   //   },
   //   json: true,
   // });
   // console.log('getDB', getDB);
-  return result;
+  return send;
+}
+
+async function getAllFromDB() {
+  const getAllDB = await request({
+    method: 'GET',
+    uri: 'http://localhost:5000/posts',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    json: true,
+  });
+  console.log('getAllDB', getAllDB);
 }
 
 // getMongoDB().then(console.log);
@@ -68,4 +80,4 @@ createOrder().then();
 // eslint-disable-next-line max-len
 // createOrder().then(console.log).then(getOrder().then(console.log).then(writeDB().then(console.log)));
 
-module.exports = { createOrder };
+module.exports = { createOrder, getAllFromDB };

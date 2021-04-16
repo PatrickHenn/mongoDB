@@ -4,7 +4,7 @@ const test = require('../controllers/index.js');
 
 const router = express.Router();
 
-// const { createOrder, sendData } = require('/../createOrder.js');
+const { createOrder } = require('../controllers/index');
 
 router.get('/', posts.findAll);
 router.post('/', posts.create);
@@ -15,8 +15,8 @@ router.post('/test', async (req, res) => {
 });
 
 router.post('/test', async (req, res) => {
-  const result = await test.getOrder(req.body ? req.body : '');
-  res.render('../views/index', { createOrder: result });
+  const result = await createOrder(req.body ? req.body : '');
+  res.render('../views/index', { createOrder: result }); 
 });
 
 // router.get('/test', test.getOrder);

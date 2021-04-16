@@ -12,17 +12,18 @@ html
         form(action='/api/test' method='get')
             input.btn(type='submit' value='get -> Order')
         table(style='width:100%', border='1')
+          pre=JSON.stringify(result)
+        h1 MongoDB
           tr
             th Name
             th Price
             th Datum
             th Organisation
             th OrderId
-            - for (let i = 0; i < 10; ++i) {
+            - console.log('fields', createOrder)
           tr
-            td=createOrder
-            td=createOrder
-            td=createOrder
-            td=createOrder
-            td=createOrder
-            -}
+            td=createOrder.name
+            td=createOrder.price
+            td=createOrder.createDate
+            td=createOrder.organization
+            td=createOrder.orderId
