@@ -13,16 +13,24 @@ html
             input.btn(type='submit' value='get -> Order')
         table(style='width:100%', border='1')
           pre=JSON.stringify(result)
-          h1 MongoDB
           tr
+            th Umgebung
             th Name
             th Price
             th Datum
             th Organisation
             th OrderId
           tr
+            td MongoDB
             td=createOrder.name
             td=createOrder.price
             td=createOrder.createDate
             td=createOrder.organization
             td=createOrder.orderId
+          tr
+            td bezahl.de
+            td=getOrder.list[0].name
+            td=getOrder.list[0].total
+            td=getOrder.list[0].createDate
+            td=getOrder.list[0].organization
+            td=getOrder.list[0]._id

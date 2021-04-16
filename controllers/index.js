@@ -74,10 +74,22 @@ async function getAllFromDB() {
   console.log('getAllDB', getAllDB);
 }
 
+async function getOrder() {
+  const result = await request({
+    method: 'GET',
+    uri: `https://api.dev.nx.bezahl.de/nxt/v1/order?orgId=${orgaId}`,
+    headers: {
+      'Content-Type': 'application/json',
+      'NX-Token': token,
+    },
+    json: true,
+  });
+  return result;
+}
 // getMongoDB().then(console.log);
-createOrder().then();
+// createOrder().then();
 // writeDB().then(console.log);
 // eslint-disable-next-line max-len
 // createOrder().then(console.log).then(getOrder().then(console.log).then(writeDB().then(console.log)));
 
-module.exports = { createOrder, getAllFromDB };
+module.exports = { createOrder, getAllFromDB, getOrder };
