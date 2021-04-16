@@ -13,14 +13,13 @@ html
             input.btn(type='submit' value='get -> Order')
         table(style='width:100%', border='1')
           pre=JSON.stringify(result)
-        h1 MongoDB
+          h1 MongoDB
           tr
             th Name
             th Price
             th Datum
             th Organisation
             th OrderId
-            - console.log('fields', createOrder)
           tr
             td=createOrder.name
             td=createOrder.price
